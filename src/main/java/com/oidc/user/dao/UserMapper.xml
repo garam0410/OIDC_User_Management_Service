@@ -8,8 +8,19 @@
 <mapper namespace="com.oidc.user.dao.UserMapper">
 
     <!--로그인-->
-    <select id="login" parameterType="String" resultType = "String">
+    <select id="login" parameterType="userDto" resultType = "String">
         SELECT UID FROM USERINFO WHERE USERID=#{userId} and USERPW=#{userPw}
     </select>
 
+    <select id="checkId" parameterType="String" resultType="String">
+        SELECT USERID FROM USERINFO WHERE USERID=#{userId}
+    </select>
+
+    <insert id="register" parameterType="userDto">
+        INSERT INTO USERINFO(UNAME, USERID, USERPW, USEX, USEREMAIL, UNUMBER) VALUES (#{uname},#{userId},#{userPw},#{usex},#{userEmail},#{unumber})
+    </insert>
+
+    <select id="findIdPw" parameterType="userDto" resultType="HashMap">
+        SELECT USERID, USERPW FROM USERINFO WHERE UNAME=#{uname} AND USEREMAIL=#{userEmail} AND UNUMBER=#{unumber}
+    </select>
 </mapper>
