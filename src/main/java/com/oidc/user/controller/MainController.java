@@ -23,6 +23,7 @@ public class MainController {
     @GetMapping(path = "/test")
     public String test(){
         result = "user";
+        System.out.println(result);
         return result;
     }
 
@@ -44,6 +45,7 @@ public class MainController {
             e.printStackTrace();
             result = "Error";
         }
+        System.out.println("중복 : " + result);
         return result;
     }
 
@@ -68,6 +70,7 @@ public class MainController {
             e.printStackTrace();
             result = "Error";
         }
+        System.out.println("login : " + result);
         return result;
     }
     // 회원가입 처리
@@ -84,7 +87,7 @@ public class MainController {
             e.printStackTrace();
             result = "fail";
         }
-
+        System.out.println("register : " + result);
         return result;
     }
 
