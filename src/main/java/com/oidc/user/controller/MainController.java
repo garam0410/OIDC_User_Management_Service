@@ -80,12 +80,20 @@ public class MainController {
         UserDto userDto = new UserDto(uname, userId, userPw, usex, userEmail, unumber);
 
         try{
-            userMapper.register(userDto);
-            result = "success";
+
+            result = userMapper.checkId(userId);
+
+            if(result == null){
+                userMapper.register(userDto);
+                result = "Success";
+            }
+            else{
+                result = "Exist";
+            }
 
         }catch(Exception e){
             e.printStackTrace();
-            result = "fail";
+            result = "Fail";
         }
         System.out.println("register : " + result);
         return result;
