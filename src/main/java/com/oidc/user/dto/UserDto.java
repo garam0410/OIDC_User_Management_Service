@@ -29,8 +29,8 @@ public class UserDto {
         return uname;
     }
 
-    public void setUserid(String userid) {
-        this.userId = userid;
+    public void setUserid(String userId) {
+        this.userId = userId;
     }
 
     public String getUserid() {
