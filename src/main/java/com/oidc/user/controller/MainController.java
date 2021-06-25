@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @ComponentScan(basePackages={"com.oidc.user.dao"})
@@ -59,9 +61,13 @@ public class MainController {
 
         try{
             result = userMapper.login(userDto);
+
+            // 값이 비어있음
             if(result == null){
                 result = "Empty";
             }
+
+            // 로그인 성공
             else{
                 result = "Success";
             }
@@ -83,10 +89,13 @@ public class MainController {
 
             result = userMapper.checkId(userId);
 
+            // 회원가입 성공
             if(result == null){
                 userMapper.register(userDto);
                 result = "Success";
             }
+
+            //아이디 중복으로 회원가입 실패
             else{
                 result = "Exist";
             }
@@ -101,9 +110,9 @@ public class MainController {
 
     // ID,PW 찾아서 결과 반환
     @GetMapping(path="/findidpw")
-    public Map<String, String> findIdPw(@RequestParam String uname, String userEmail, String unumber){
+    public List<UserDto> findIdPw(@RequestParam String uname, String userEmail, String unumber){
 
-        Map<String, String> value;
+        List<UserDto> list = null;
 
         UserDto userDto = new UserDto();
         userDto.setUname(uname);
@@ -111,14 +120,22 @@ public class MainController {
         userDto.setUnumber(unumber);
 
         try{
-            value = userMapper.findIdPw(userDto);
-            if(value == null){
-                value.put("result", "Error");
+            list = userMapper.findIdPw(userDto);
+
+            // 회원정보 존재함
+            if(list.size() != 0){
+                result = "Exist";
             }
-            return value;
+
+            // 회원정보 존재하지 않음
+            else{
+                result = "noExist";
+            }
+
         }catch(Exception e){
             e.printStackTrace();
-            return null;
         }
+        System.out.println("find : " + result);
+        return list;
     }
 }

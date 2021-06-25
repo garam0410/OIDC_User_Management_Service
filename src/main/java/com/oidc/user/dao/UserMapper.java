@@ -3,6 +3,7 @@ package com.oidc.user.dao;
 
 import com.oidc.user.dto.UserDto;
 
+import java.util.List;
 import java.util.Map;
 
 public interface UserMapper {
@@ -13,5 +14,5 @@ public interface UserMapper {
     // 회원가입
     void register(UserDto userDto);
     // ID,PW 찾기
-    Map findIdPw(UserDto userDto);
+    List<UserDto> findIdPw(UserDto userDto);
 }

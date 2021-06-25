@@ -20,7 +20,7 @@
         INSERT INTO USERINFO(UNAME, USERID, USERPW, USEX, USEREMAIL, UNUMBER) VALUES (#{uname},#{userId},#{userPw},#{usex},#{userEmail},#{unumber})
     </insert>
 
-    <select id="findIdPw" parameterType="userDto" resultType="HashMap">
+    <select id="findIdPw" parameterType="userDto" resultType="UserDto">
         SELECT USERID, USERPW FROM USERINFO WHERE UNAME=#{uname} AND USEREMAIL=#{userEmail} AND UNUMBER=#{unumber}
     </select>
 </mapper>
