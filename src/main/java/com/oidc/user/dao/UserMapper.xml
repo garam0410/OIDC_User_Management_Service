@@ -17,7 +17,7 @@
     </select>
 
     <insert id="register" parameterType="userDto">
-        INSERT INTO USERINFO(UNAME, USERID, USERPW, USEX, USEREMAIL, UNUMBER) VALUES (#{uname},#{userId},#{userPw},#{usex},#{userEmail},#{unumber})
+        INSERT INTO USERINFO(UNAME, USERID, USERPW, USEX, USEREMAIL, UNUMBER, UAGE) VALUES (#{uname},#{userId},#{userPw},#{usex},#{userEmail},#{unumber}, #{uAge})
     </insert>
 
     <select id="findIdPw" parameterType="userDto" resultType="UserDto">

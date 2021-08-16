@@ -56,7 +56,7 @@ public class MainController {
     public String login(@RequestParam String userId, String userPw){
 
         UserDto userDto = new UserDto();
-        userDto.setUserid(userId);
+        userDto.setUserId(userId);
         userDto.setUserPw(userPw);
 
         try{
@@ -81,9 +81,9 @@ public class MainController {
     }
     // 회원가입 처리
     @GetMapping(path = "/register")
-    public String register(@RequestParam String uname, String userId, String userPw, String usex, String userEmail, String unumber){
+    public String register(@RequestParam String uname, String userId, String userPw, String uAge, String usex, String userEmail, String unumber){
 
-        UserDto userDto = new UserDto(uname, userId, userPw, usex, userEmail, unumber);
+        UserDto userDto = new UserDto(uname, userId, userPw, uAge, usex, userEmail, unumber);
 
         try{
 
