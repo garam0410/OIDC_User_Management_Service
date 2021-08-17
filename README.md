@@ -19,10 +19,10 @@
 
 ## Interface
 - login() : 로그인을 위해 사용자 정보를 DB로부터 비교하기 위한 기능
-- 
+
 - checkId() : 회원가입 과정에서 ID의 중복검사를 위한 기능
-- 
+
 - register() : 회원가입을 위해, 회원 기입 정보를 DB에 Insert하기 위한 기능
-- 
+
 - findIdPw() : 잃어버림 ID/PW를 찾기 위한 기능
-- 
+
